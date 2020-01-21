@@ -1,0 +1,115 @@
+@charset "utf-8";
+
+/* Font */
+/* @font-face {
+	font-family:ns;
+	src:url('../fonts/NotoSans-Thin.eot');
+	src:local(※),
+		url('../fonts/NotoSans-Thin.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/NotoSans-Thin.woff') format('woff'),
+		url('../fonts/NotoSans-Thin.woff2') format('woff2'),
+		url('../fonts/NotoSans-Thin.otf') format('opentype');
+	font-weight: 100;
+	font-style: normal
+}
+@font-face {
+	font-family:ns;
+	src:url('../fonts/NotoSans-Light.eot');
+	src:local(※),
+		url('../fonts/NotoSans-Light.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/NotoSans-Light.woff') format('woff'),
+		url('../fonts/NotoSans-Light.woff2') format('woff2'),
+		url('../fonts/NotoSans-Light.otf') format('opentype');
+	font-weight: 300;
+	font-style: normal
+}
+@font-face {
+	font-family:ns;
+	src:url('../fonts/NotoSans-Regular.eot');
+	src:local(※),
+		url('../fonts/NotoSans-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/NotoSans-Regular.woff') format('woff'),
+		url('../fonts/NotoSans-Regular.woff2') format('woff2'),
+		url('../fonts/NotoSans-Regular.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal
+}
+@font-face {
+	font-family:ns;
+	src:url('../fonts/NotoSans-Medium.eot');
+	src:local(※),
+		url('../fonts/NotoSans-Medium.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/NotoSans-Medium.woff') format('woff'),
+		url('../fonts/NotoSans-Medium.woff2') format('woff2'),
+		url('../fonts/NotoSans-Medium.otf') format('opentype');
+	font-weight: 500;
+	font-style: normal
+}
+@font-face {
+	font-family:ns;
+	src:url('../fonts/NotoSans-Bold.eot');
+	src:local(※),
+		url('../fonts/NotoSans-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/NotoSans-Bold.woff') format('woff'),
+		url('../fonts/NotoSans-Bold.woff') format('woff2'),
+		url('../fonts/NotoSans-Bold.otf') format('opentype');
+	font-weight: 700;
+	font-style: normal
+} */
+
+body,div,form,p,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,em,p,span,textarea,pre,label,fieldset,th,td,button,a,input,select,hr, figure {margin:0;padding:0;font-family:ns, Arial, dotum;word-break:break-all;vertical-align:top;}
+h1,h2,h3,h4,h5,h6,strong,th {font-weight:normal;}
+em,span,strong,a,button,i {font-size:100%;}
+em,address {font-style:normal;}
+ol,ul,dl {list-style:none;}
+fieldset,img,hr,button {border:0;}
+img,input,textarea,select {vertical-align:top;}
+table {width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;}
+legend,caption {overflow:hidden;width:0;height:0;padding:0;font-size:0;line-height:0;}
+a {text-decoration:none;}
+button {overflow:visible;margin:0;padding:0;background:none;border-radius:0;cursor:pointer;outline:none;}
+input,textarea,select {background:transparent;border:none;border-radius:0;-webkit-border-radius:0;-moz-appearance:none;-webkit-appearance:none;appearance:none;outline:none;} /* 모바일 한정 */
+textarea {resize:none;}
+input[type=text]::-ms-clear,input[type=password]::-ms-clear,input[type=text]::-ms-reveal,input[type=password]::-ms-reveal {display:none;}
+select {outline:none;border:none;border-radius:0;}
+select::-ms-expand {display:none;}
+.blind {position:absolute;top:0;left:0;overflow:hidden;width:0;height:0;font-size:0;line-height:0;}
+.clfix:after {content:"";display:block;clear:both;visibility:hidden;height:0;}
+
+#header {width:100%;padding:50px 60px 0;box-sizing:border-box;position:fixed;top:0;left:0;z-index:100;}
+#header .headerInner {width:100%;font-size:0;}
+#header .headerInner .logo {width:calc(100% - 30px);display:inline-block;vertical-align:middle;}
+#header .headerInner .logo > a {display:inline-block;}
+#header .headerInner .logo > a:before {content:'';width:59px;height:29px;display:inline-block;background:url(../images/common/logo.png) 0 0 no-repeat;vertical-align:middle;transition:350ms background linear;}
+#header .headerInner .logo > a:after {content:'';width:190px;height:20px;display:inline-block;margin-left:12px;background:url(../images/common/name_bk.png) 0 0 no-repeat;vertical-align:middle;}
+#header .headerInner .btnAllMenu {position:absolute;top:50px;right:60px;width:30px;height:26px;display:inline-block;margin-left:auto;background:url(../images/common/btn_menu_bk.png) 0 0 no-repeat;background-size:100% auto;vertical-align:middle;z-index:100;} 
+
+#header.wh .headerInner .logo > a:before {background:url(../images/common/logo_wh.png) 0 0 no-repeat;}
+#header.wh .headerInner .logo > a:after {background:url(../images/common/name_wh.png) 0 0 no-repeat;}
+#header.wh .headerInner .btnAllMenu {background:url(../images/common/btn_menu_wh.png) 0 0 no-repeat;}
+
+#header .headerInner .btnAllMenu.on {background:url(../images/common/btn_menu_close.png) 0 0 no-repeat;}
+#header.on .headerInner .logo > a:after {background:none;}
+
+#gnb {width:600px;height:100%;padding-top:200px;box-sizing:border-box;position:fixed;top:0;right:0;z-index:9;background-color:#0f1118;transform:translateX(100%);opacity:0;visibility:hidden;}
+#gnb .menu > a {width:100%;display:block;padding-right:100px;box-sizing:border-box;font-size:30px;font-weight:300;color:#69696e;text-align:right;line-height:1.83;white-space:nowrap;}
+#gnb .menu.active > a {font-weight:500;color:#fff;}
+
+/*media*/
+@media screen and (max-width: 767px){
+  #header {padding:35px 30px 0; box-sizing:border-box;}
+  #header .headerInner .logo > a:before {width:36px;height:18px;background:url(../images/common/logo@3x.png) 0 0 no-repeat;background-size:100% auto;}
+  #header .headerInner .logo > a:after {width:117px;height:13px;background:url(../images/common/name_bk@3x.png) 0 0 no-repeat;background-size:100% auto;}
+  #header .headerInner .btnAllMenu {top:36px;right:30px;width:20px;height:20px;background:url(../images/common/btn_menu_bk@3x.png) 0 0 no-repeat;background-size:100% auto;}
+
+  #header.wh .headerInner .logo > a:before {background:url(../images/common/logo_wh@3x.png) 0 0 no-repeat;background-size:100% auto;}
+  #header.wh .headerInner .logo > a:after {background:url(../images/common/name_wh@3x.png) 0 0 no-repeat;background-size:100% auto;}
+  #header.wh .headerInner .btnAllMenu {width:20px;height:20px;background:url(../images/common/btn_menu_wh@3x.png) 0 0 no-repeat;background-size:100% auto;}
+
+  /* #header.on .headerInner .logo > a:after {width:53px;height:13px;background:url(../images/common/name_on@3x.png) 0 0 no-repeat;background-size:100% auto;} */
+  #header .headerInner .btnAllMenu.on {background:url(../images/common/btn_menu_close@3x.png) 0 0 no-repeat;background-size:100% auto;}
+
+  #gnb {width:280px;}
+  #gnb .menu > a {padding:0 30px;font-size:20px;}
+}
+
