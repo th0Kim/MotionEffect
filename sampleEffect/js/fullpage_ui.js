@@ -20,42 +20,68 @@ app = {
       },
       on: {
           init:function(){
-            console.log('init');
-            animate('FIRST');
-            function animate(id) {
-              var $id = '#'+ id;
-              // var FIRST_ANIMATE,
-              //     SECOND_ANIMATE = null;
-              handler = {
-                FIRST: function FIRST(){
-                  console.log('1')
-                },
-                SECOND: function SECOND(){
-                  console.log('2')
-                },
-                THIRD: function THIRD(){
-                  console.log('3')
-                },
-                FOURTH: function FOURTH(){
-                  console.log('4')
-                },
-              }
-              handler[id]();
-            }
+            app.addEvent('FIRST');
           },
           slideChange: function() {
             var idx = swiper.activeIndex;
             var checkID = $(fullpage).find('.swiper-slide').eq(idx).attr('id');
-            // animate(checkID);
-            this.init.animate()
+            app.addEvent(checkID)
+            // console.log('슬라이드체인지')
           }
-      }
+      },
       // preventInteractionOnTransition: true,
       // simulateTouch: simulatetouch,
       // allowTouchMove: allowtouchmove,
       // followFinger: followfinger,
     });
   },
+  addEvent: function(id) {
+    var $id = '#'+ id;
+    // var WINDOWLOAD = null;
+    var FIRST_ANIMATE,
+        SECOND_ANIMATE,
+        THIRD_ANIMATE,
+        FOURTH_ANIMATE = null;
+    var handler = {
+      FIRST: function FIRST(){
+        if(FIRST_ANIMATE) return; // 한번만 실행
+        FIRST_ANIMATE = true; // 한번만 실행
+
+        var _this = $($id);
+        var animate = _this.find('.animate');
+        var aniLength = animate.length;
+        TweenMax.to(animate, 1, {opacity:1, scale: 2});
+      },
+      SECOND: function SECOND(){
+        if(SECOND_ANIMATE) return;
+        SECOND_ANIMATE = true;
+
+        var _this = $($id);
+        var animate = _this.find('.animate');
+        var aniLength = animate.length;
+        TweenMax.to(animate, 1, {opacity:1, scale: 2});
+      },
+      THIRD: function THIRD(){
+        if(THIRD_ANIMATE) return;
+        THIRD_ANIMATE = true;
+        
+        var _this = $($id);
+        var animate = _this.find('.animate');
+        var aniLength = animate.length;
+        TweenMax.to(animate, 1, {opacity:1, scale: 2});
+      },
+      FOURTH: function FOURTH(){
+        if(FOURTH_ANIMATE) return;
+        FOURTH_ANIMATE = true;
+
+        var _this = $($id);
+        var animate = _this.find('.animate');
+        var aniLength = animate.length;
+        TweenMax.to(animate, 1, {opacity:1, scale: 2});
+      },
+    }
+    handler[id]();
+  }
 }
   
 $(function(){
