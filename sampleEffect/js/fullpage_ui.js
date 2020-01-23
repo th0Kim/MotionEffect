@@ -5,7 +5,7 @@ function hasJqueryObject($elem) { return $elem.length > 0 }
 var app = app || {};
 
 app = {
-  mainSlide: function(fullpage, swiperPager) {
+  PCSlide: function(fullpage, swiperPager) {
     var swiper = new Swiper(fullpage, {
       direction: 'vertical',
       slidesPerView: 1,
@@ -39,22 +39,19 @@ app = {
     var handler = {
       FIRST: function FIRST(){
         var $animate = $($id).find(animate);
-        TweenMax.to($animate, 1, {opacity:1, scale: 2});
+        TweenMax.to($animate.find('.sacle'), .5, {opacity:1, scale: 2, ease: Linear.easeNone});
       },
       SECOND: function SECOND(){
-        var _this = $($id);
-        var $animate = _this.find(animate);
-        TweenMax.to($animate, 1, {opacity:1, scale: 2});
+        var $animate = $($id).find(animate);
+        TweenMax.to($animate.find('.move'), 1, {opacity:1, x:0, ease: Linear.easeNone});
       },
       THIRD: function THIRD(){
-        var _this = $($id);
-        var $animate = _this.find(animate);
-        TweenMax.to($animate, 1, {opacity:1, scale: 2});
+        var $animate = $($id).find(animate);
+        TweenMax.to($animate.find('.sacle'), .5, {opacity:1, scale: 2, ease: Linear.easeNone});
       },
       FOURTH: function FOURTH(){
-        var _this = $($id);
-        var $animate = _this.find(animate);
-        TweenMax.to($animate, 1, {opacity:1, scale: 2});
+        var $animate = $($id).find(animate);
+        TweenMax.to($animate.find('.move'), 1, {opacity:1, x:0, ease: Linear.easeNone});
       },
     }
     handler[id]();
@@ -63,6 +60,8 @@ app = {
   
 $(function(){
   app.$body = $("body");
-	hasJqueryObject(app.$body.find(".fullpage")) && app.mainSlide(".fullpage", ".swiper-pagination");
+	hasJqueryObject(app.$body.find(".fullpage")) && app.PCSlide(".fullpage", ".swiper-pagination");
+  // document.body.append('<script type="text/javascript" src="js/textMotion.js"></script>');
 
 })
+document.write("<script type='text/javascript' src='js/textMotion.js'></" + "script>");
