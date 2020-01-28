@@ -61,7 +61,6 @@ app = {
 $(function(){
   app.$body = $("body");
 	hasJqueryObject(app.$body.find(".fullpage")) && app.PCSlide(".fullpage", ".swiper-pagination");
-  // document.body.append('<script type="text/javascript" src="js/textMotion.js"></script>');
-
 })
 document.write("<script type='text/javascript' src='js/textMotion.js'></" + "script>");
+document.write("<script type='text/javascript' src='js/gnb.js'></" + "script>");

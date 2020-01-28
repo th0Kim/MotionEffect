@@ -1,5 +1,11 @@
 /*
-// ver 0.0.1
+* Version   : ver 0.0.1
+* File      : js/textMotion.js
+* Author    : M4NC-WP (KSY)
+* 
+* SUMMARY:
+* 1) TEXTMOTION
+* 2) BGMOTION
 */
 function hasJqueryObject($elem) { return $elem.length > 0 }
 
@@ -36,24 +42,24 @@ MOT = {
             for(var i=0;i<3;i++){
                 var randomN = Math.floor(Math.random() * 40);
                 var tl = new TimelineMax();
-                tl.staggerTo($($container).find(moving).eq(i), .3, {y:-randomN * i, opacity:1, ease: Linear.easeNone, onComplete:function(){
-                        TweenMax.staggerTo($(this.target), .3, {opacity:0, ease: Linear.easeNone});
+                tl.staggerTo($($container).find(moving).eq(i), .3, {y:-randomN * i, opacity:1, ease:Linear.easeNone, onComplete:function(){
+                        TweenMax.staggerTo($(this.target), .3, {opacity:0, ease:Linear.easeNone});
                     }
                 });
             }
         }).on(this.mouseleave, function(){
             for(var i=0;i<3;i++){
-                TweenMax.staggerTo($(this).find(moving).eq(i), .3, {y:50, opacity:0, ease: Linear.easeNone});
+                TweenMax.staggerTo($(this).find(moving).eq(i), .3, {y:50, opacity:0, ease:Linear.easeNone});
             }
         })
     },
     BGMOTION: function(){
         $(this.$bgRect).on(this.mouseover, function(){
             var tl = new TimelineMax();
-            tl.to($(this).find(rect), .3, {scaleX:1, ease: Linear.easeNone});
+            tl.to($(this).find(rect), .3, {scaleX:1, ease:Linear.easeNone});
         }).on(this.mouseleave, function(){
             var tl = new TimelineMax();
-            tl.to($(this).find(rect), 1, {scaleX:0, ease: Linear.easeNone, borderRadius:'none'});
+            tl.to($(this).find(rect), 1, {scaleX:0, ease:Linear.easeNone, borderRadius:'none'});
         })
     },
 }
