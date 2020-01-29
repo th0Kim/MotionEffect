@@ -88,7 +88,7 @@ select::-ms-expand {display:none;}
 #gnb {position:fixed; top:0; left:0; right:0; z-index:1; width:100%; box-sizing:border-box; transform-origin:0 0; transform:translateY(-100%);}
 .menu {position:relative; z-index:1; padding:77px 20px; background-color:#fff; text-align:center;}
 .menu li {margin-top:30px;}
-.menu li a {font-size:2em; color:#333;}
+.menu li a {font-size:1.5em; color:#333;}
 
-.dimColor {position:absolute; top:0; left:0; z-index:0; width:100%; height:489px; font-size:0; transform-origin:0 0; transform:translateY(-100%);}
+.dimColor {position:absolute; top:0; left:0; z-index:0; width:100%; font-size:0; transform-origin:0 0; transform:translateY(-100%);}
 .dimColor span {display:inline-block; width:25%; height:100%; background-color:#ff4e50; transform-origin:0 0; transform:scaleY(0);}

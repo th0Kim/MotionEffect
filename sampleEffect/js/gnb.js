@@ -27,10 +27,8 @@ HEADER = {
   addEvent: function(hd, gnb, active, colorDim) {
     this.$toggleBtn.on('click', function(){
       var $colorDim = $(colorDim), tl = new TimelineMax();
-      var dimH = $(colorDim).height();
+      var gnbH = $(gnb).height();
       var span = 'span';
-
-      console.log(dimH,'지엔비');
 
       $(hd).toggleClass(active);
       $(this).toggleClass(active);
@@ -39,17 +37,15 @@ HEADER = {
         .set($(this).find(span).eq(0), { opacity:1 })
         .set($(this).find(span).eq(1), { top:'18px' })
         .set($(this).find(span).eq(2), { bottom: '6px' })
-        // .set($colorDim, { y:'-100%' })
+        .set($colorDim, { height:gnbH+ 'px' })
 
       if( $(hd).hasClass(active) ) {
-        tl.add([
-            dim(),
-            TweenMax.to($(gnb), .5 ,{ y:'0%', delay:.1, ease:Linear.easeNone }),
-            TweenMax.to($(this).find(span).eq(0), .0 ,{  opacity:0 }),
-            TweenMax.to($(hd).find('.logo a'), .2 ,{ color:'#333333' }),
-            TweenMax.staggerTo($(this).find(span), .2 ,{ backgroundColor:'#333333', rotation:'45deg' }),
-            TweenMax.to($(this).find(span).eq(2), .2 ,{ bottom: '19px', rotation:'-45deg' }),
-        ])
+        dim();
+        tl.to($(gnb), .5 ,{ y:'0%', ease:Linear.easeNone }, '-=.2')
+          .to($(this).find(span).eq(0), .0 ,{  opacity:0 })
+          .to($(hd).find('.logo a'), .2 ,{ color:'#333333' })
+          .staggerTo($(this).find(span), .2 ,{ backgroundColor:'#333333', rotation:'45deg' })
+          .to($(this).find(span).eq(2), .2 ,{ bottom: '19px', rotation:'-45deg' }, '-=.2')
 
         function dim(){
           for(var i=0;i<4;i++) {
@@ -62,8 +58,7 @@ HEADER = {
           .to($(gnb), .5 ,{ y:'-100%', ease:Linear.easeNone })
           .to($colorDim.find(span), .5, { scaleY:0, ease:Linear.easeNone,
             onComplete:function(){TweenMax.set($colorDim, { y:'-100%' })}
-          }, '-=.3')
-          
+          }, '-=.4')
       }
     })
   }
@@ -72,5 +67,4 @@ HEADER = {
 $(function(){
   HEADER.$body = $("body");
 	hasJqueryObject(HEADER.$body.find("#header")) && HEADER.gnbMotion('#header');
-
 })
