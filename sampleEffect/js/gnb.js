@@ -22,13 +22,15 @@ HEADER = {
     this.$toggleBtn = this.$header.find(this.toggleBtn);
     this.$dimColor = this.$header.find(this.dimColor);
 
-    // console.log(this.$header)
     HEADER.addEvent(this.$header, this.$gnb, this.activeClass, this.$dimColor);
   },
   addEvent: function(hd, gnb, active, colorDim) {
     this.$toggleBtn.on('click', function(){
       var $colorDim = $(colorDim), tl = new TimelineMax();
+      var dimH = $(colorDim).height();
       var span = 'span';
+
+      console.log(dimH,'지엔비');
 
       $(hd).toggleClass(active);
       $(this).toggleClass(active);
@@ -37,8 +39,7 @@ HEADER = {
         .set($(this).find(span).eq(0), { opacity:1 })
         .set($(this).find(span).eq(1), { top:'18px' })
         .set($(this).find(span).eq(2), { bottom: '6px' })
-        .set($colorDim, { height:489+'px' })
-        .set($colorDim.find(span), { scaleY:0, ease:Linear.easeNone })
+        // .set($colorDim, { y:'-100%' })
 
       if( $(hd).hasClass(active) ) {
         tl.add([
@@ -52,30 +53,18 @@ HEADER = {
 
         function dim(){
           for(var i=0;i<4;i++) {
-            tl.to($colorDim.find(span).eq(i), .15, { scaleY:1, ease:Linear.easeNone,
-              // onComplete:function(){tl.staggerTo($(this.target), .2, { scaleY:1, ease:Linear.easeNone})}
-            }, '-=.1');
+            tl.set($colorDim, { y:'0%' })
+              .to($colorDim.find(span).eq(i), .15, { scaleY:1, ease:Linear.easeNone }, '-=.1');
           }
         }
-
-        // for(var i=0;i<5;i++) {
-        //   tl.to($colorDim.find(span).eq(i), .2, { scaleY:1, ease:Linear.easeNone,
-        //     // onComplete:function(){tl.staggerTo($(this.target), .2, { scaleY:1, ease:Linear.easeNone})}
-        //   }, '-=.1');
-        // }
-        // // tl.staggerTo($colorDim.find(span), .5, { scaleY:1, ease:Linear.easeNone, delay:.3 }),
-        // tl.to($(gnb), .5 ,{ y:'0%' })
-        //   .to($(this).find(span).eq(0), .0 ,{  opacity:0 })
-        //   .to($(hd).find('.logo a'), .2 ,{ color:'#333333' })
-        //   .staggerTo($(this).find(span), .2 ,{ backgroundColor:'#333333', rotation:'45deg' })
-        //   .to($(this).find(span).eq(2), .2 ,{ bottom: '19px', rotation:'-45deg' })
-        
       } else {
-        tl.to($(gnb), .5 ,{ y:'-100%', ease:Linear.easeNone })
-          .to($(hd).find('.logo a'), .0 ,{ color:'#ffffff' })
-          .to($colorDim.find(span), .5, { scaleY:0, delay:.5, ease:Linear.easeNone })
+        tl.to($(hd).find('.logo a'), .0 ,{ color:'#ffffff' })
+          .to($(gnb), .5 ,{ y:'-100%', ease:Linear.easeNone })
+          .to($colorDim.find(span), .5, { scaleY:0, ease:Linear.easeNone,
+            onComplete:function(){TweenMax.set($colorDim, { y:'-100%' })}
+          }, '-=.3')
+          
       }
-
     })
   }
 }
