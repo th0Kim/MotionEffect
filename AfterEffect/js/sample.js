@@ -1,10 +1,11 @@
 function btnClick01(id,rep){
+  var itemPath = $('#' + id).attr('data-json'); //사용 할 path 가져오기
   var options = {
     container: document.getElementById(id),
     renderer: 'svg',
     loop: rep,
     autoplay: false,
-    path: 'https://assets2.lottiefiles.com/packages/lf20_wX69nA.json' //json파일이 있을 시 path: '경로'+ id + '.json'
+    path: itemPath
   }
   return bodymovin.loadAnimation(options);
 }
