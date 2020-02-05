@@ -9,7 +9,8 @@
     <style>
     body {font-family:'굴림';}
     button, input {height:40px; margin-top:20px; padding:0 5px; line-height:40px;}
-    input {width:300px;}
+    .input01 {width:300px;}
+    .input02 {width:400px;}
     .box {float:left; width:200px; height:200px; margin-left:40px;}
     #check.box {margin-left:0;}
     </style>
@@ -17,17 +18,19 @@
 <body>
     <h1>lottie test</h1>
     <h1>마우스 올렸을 때</h1>
-    <div id="check" class="box"></div>
-    <div id="heart" class="box"></div>
-    <div id="circle" class="box"></div>
+    <div id="first" class="box">first</div>
+    <div id="second" class="box">second</div>
+    <div id="thirth" class="box">thirth</div>
+    <div id="fourth" class="box">fourth</div>
     <div style="clear:both; padding-top:30px;">
 
-      <button class="btn01">오버하면 체크가 1번 움직여요~<!-- 체크 --></button>
-      <button class="btn03">클릭하면 체크가 1번 움직여요~<!-- 체크:클릭 --></button>
-      <button class="btn02">오버하면 하트가 움직여요~<!-- 하트 --></button>
+      <button class="btn01">오버하면 first 움직이 1번 시작돼요~<!-- 체크 --></button>
+      <button class="btn02">클릭하면 second 1번 움직여요~<!-- 체크:클릭 --></button>
+      <button class="btn03">오버하면 thirth 무한 움직여요~ 벗어나면 멈춰요!<!-- 하트 --></button>
 
       <form>
-        <input type="text" class="input01" placeholder="포커스 되면 circle이 무한 움직여요~">
+        <input type="text" class="input01" placeholder="포커스 되면 thirth 무한 움직임이 시작돼요~">
+        <input type="text" class="input02" placeholder="포커스 되면 fourth 무한 움직임이 시작돼요~ 해제되면 멈춰요!">
       </form>
     </div>
     <!-- Scripts -->
