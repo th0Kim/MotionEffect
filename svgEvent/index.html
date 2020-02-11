@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Text Masking</title>
+    <style>
+        body {height:100vh; margin:0;}
+        .box {width:100%;}
+
+        svg {position:fixed; top:0; left:0; z-index: 0; font-family:"Montserrat"; font-size:8em; font-weight:bold; text-transform:uppercase; transition: 1s font-size;}
+        .bg {position:fixed; top:0; left:0; background-image: linear-gradient(to left,#aee, #aee, #eaa, #eae); width:100%; height:100%;}
+        
+        svg rect {
+            fill: white;
+            mask:url(#mask);
+        }
+
+        svg .rectBox {
+            fill: black;
+        }
+
+        @media screen and (max-width:1200px) {
+            svg {
+                font-size:4em;
+            }
+        }
+        .box02 {position:relative; z-index:2; vertical-align:middle; text-align:center; font-size:8em;}
+        .box02 + .box02 {margin-top:50px;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <!-- 배경 -->
+        <div class="bg"></div>
+        <!-- 이 텍스트를 제외하고 배경이 가려짐 -->
+        <svg height="100%" width="100%">
+            <defs>
+                <mask id="mask" x="0" y="0" height="100%" width="100%">
+                    <rect x="0" y="0" height="100%" width="100%" />
+                    <rect x="0" y="0" height="100%" width="100%" />
+                    <text x="50%" y="50%" fill="red" text-anchor="middle">I LOVE SVG!</text>
+                </mask>
+            </defs>
+            <rect class="rectBox" x="0" y="0" height="100%" width="100%" /> <!-- 텍스트가 뚫어진것 처럼 마스크 배경이 되는 위치 -->
+        </svg>
+        <div class="box02">text<br> text<br> text<br> text<br> text<br> text<br>text<br></div>
+        <div class="box02">text<br> text<br> text<br> text<br> text<br> text<br>text<br></div>
+        <div class="box02">text<br> text<br> text<br> text<br> text<br> text<br>text<br></div>
+        <div class="box02">text<br> text<br> text<br> text<br> text<br> text<br>text<br></div>
+    </div>
+    <!-- <script>
+        let type = document.querySelector('text');
+        setTimeout(() => {
+            type.innerHTML = "HELLO WORLD!"
+        }, 2000)
+    </script> -->
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <script>
+        $(function(){
+            $(window).on('scroll', function(){
+                var num = window.scrollY;
+                if ( num < 100 ) {
+                    TweenMax.set($('svg'), {fontSize: '8em'})
+                    TweenMax.set($('text'), {y:'0'})
+                } else {
+                    TweenMax.to($('svg'), 0, {fontSize: num*3 + 'em'})
+                    TweenMax.to($('text'), 0, {y:num})
+
+                    if ($(window).width <= 1200 ){
+                        if( num > 523 ) {
+                            TweenMax.to($('text'), 0, {y:523})
+                        }
+                        console.log('디바이스 작음')
+                    } else {
+                        if( num > 523 ) {
+                            TweenMax.to($('text'), 0, {y:523})
+                        }
+                        console.log('디바이스 큼')
+                    }
+                }
+            })
+            var bgH = $('.bg').height();
+            $('.box02').first().addClass('firstBox');
+            $('.firstBox').css({marginTop:bgH + 'px'})
+            console.log(bgH)
+        })
+    </script>
+</body>
+</html>
