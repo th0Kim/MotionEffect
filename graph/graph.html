@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="../sampleEffect/css/base.css">
+<style>
+/* horizion */
+.sh_horizion {display:table;table-layout:fixed;width:100%;padding:0 15px;box-sizing:border-box;}
+.sh_horizion .sh_item {display:table-cell;height:35px;vertical-align:middle;border-left:2px solid #fff;}
+.sh_horizion .sh_item:first-child {border-left:none;}
+.sh_square:before {content:'';display:inline-block;width:14px;height:14px;margin-top:-4px;margin-right:5px;background-color:red;border-radius:3px;vertical-align:middle;}
+.sh_horizion .bg_color01,
+.sh_square.bg_color01:before,
+.sh_stick .bg_color01 {background-color:#1160b1;}
+.bg_color02 {background-color:greenyellow;}
+.bg_color03 {background-color:rosybrown;}
+
+/* vertical */
+.sh_vertical {position:relative;padding:0 15px 0 55px;margin-top:15px;}
+.sh_vertical:after{content:'';display:block;height:30px;}
+.sh_graph_wrap {margin-top:20px;}
+.sh_graph_wrap .sh_top_area {padding:0 15px;}
+.sh_graph_wrap .sh_top_area:after{content:'';display:block;clear:both;overflow:hidden;}
+.sh_graph_wrap .sh_top_area .sh_graph_unit {float:left;margin-top:5px;font-size:10px;color:#999999;}
+.sh_graph_wrap .sh_top_area .sh_graph_btn {float:right;}
+.sh_graph_wrap .sh_top_area .sh_graph_btn [class^='btn'] {display:inline-block;height:30px;line-height:30px;padding:0 8px;margin-left:3px;box-shadow:1px 1px 5px rgba(0,0,0,0.3);border-radius:3px;box-sizing:border-box;font-size:13px;}
+.sh_graph_wrap .sh_top_area .sh_graph_btn [class^='btn'].disabled {color:#999;}
+.sh_graph_wrap .sh_top_area .sh_graph_btn .btn_prev:before,
+.sh_graph_wrap .sh_top_area .sh_graph_btn .btn_next:after {content:'';display:inline-block;width:5px;height:5px;margin-top:-2px;vertical-align:middle;transform:rotate(45deg);}
+.sh_graph_wrap .sh_top_area .sh_graph_btn .btn_prev:before {border:1px solid gray;border-width:0 0 1px 1px;margin-right:5px;}
+.sh_graph_wrap .sh_top_area .sh_graph_btn .btn_next:after{border:1px solid blue;border-width:1px 1px 0 0;margin-left:5px;}
+
+.sh_vertical .sh_graph_level {position:absolute;top:0;left:0;bottom:30px;width:100%;padding:0 15px;box-sizing:border-box;}
+.sh_vertical .sh_graph_level  span {display:inline-block;}
+.sh_vertical .sh_graph_level .graph_line {position:relative;display:block;width:100%;height:100%;}
+.sh_vertical .sh_graph_level .graph_line:last-of-type, .sh_vertical .sh_graph_level[class*=“graph_line”] .graph_line:last-of-type {height:auto;}
+.sh_vertical .sh_graph_level .graph_line:last-of-type:after {display:none;}
+.sh_vertical .sh_graph_level .graph_line:after {content:'';position:absolute;display:block;top:0;left:0;right:0;border-top:dashed 1px #dedede;}
+.sh_vertical .sh_graph_level .num {position:absolute;z-index:1;top:-9px;min-width:40px;padding-right:5px;text-align:right;font-size:10px;color:#555;background-color:#fff;}
+
+.sh_vertical .sh_graph_level.graph_line03 .graph_line {height:50%;}
+.sh_vertical .sh_graph_level.graph_line04 .graph_line {height:33.333%;}
+.sh_vertical .sh_graph_level.graph_line05 .graph_line {height:25%;} 
+.sh_vertical .sh_graph_level.graph_line06 .graph_line {height:20%;}
+
+.sh_vertical .sh_item_wrap{display:table;table-layout:fixed;width:100%;height:165px;border-bottom:1px solid #dedede;box-sizing:border-box;}
+.sh_vertical .sh_item_wrap .sh_item {display:table-cell;position:relative;height:100%;padding:0 30px;vertical-align:bottom;}
+.sh_vertical .sh_item_wrap .sh_item .sh_spot {position:absolute;left:0;bottom:-20px;width:100%;font-size:10px;color:#111;text-align:center;word-wrap:initial;}
+
+.sh_vertical .graph_item06.sh_item_wrap .sh_item{padding:0 13px;}
+.sh_vertical .graph_item07.sh_item_wrap .sh_item{padding:0 10px;}
+
+/* ——— item 2ea ——— */
+.sh_vertical .sh_item_wrap .sh_item.sh_item02 {padding:0 5px;}
+.sh_stick {position:relative;display:inline-block;width:100%;height:100%;vertical-align:bottom;}
+.sh_stick span {position:absolute;left:0;bottom:0;width:100%;background-color:#9ea8bf;}
+.sh_item02 .sh_stick span {width:48%;}
+.sh_stick span + span {left:auto;right:0;}
+.sh_stick .bg_deposit {background-color:paleturquoise;}
+.sh_stick .bg_withdraw {background-color:palegreen;}
+
+/* base */
+.list_wrap {padding:0 15px;}
+.dl_type {display:flex;margin-top:10px;font-size:13px;}
+.dl_type dt {flex-basis:180px;}
+.dl_type dd {flex-basis:100%;}
+.dl_type p {text-align:right;}
+</style>
+</head>
+<body>
+    <!-- horizion -->
+    <div class="sh_graph_wrap">
+        <div class="sh_horizion">
+            <span class="sh_item bg_color01" style="width:50%;"><span><span class="blind">50%</span></span></span>
+            <span class="sh_item bg_color02" style="width:30%;"><span><span class="blind">30%</span></span></span>
+            <span class="sh_item bg_color03" style="width:15%;"><span><span class="blind">50%</span></span></span>
+        </div>
+        <ul class="list_wrap">
+            <li>
+                <dl class="dl_type">
+                    <dt class="sh_square bg_color01">매출</dt>
+                    <dd>
+                        <p><span class="num">00.0%</span></p>
+                        <p><span class="num">100,000,000</span>원</p>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+    <!-- vertical -->
+    <div class="sh_graph_wrap">
+        <div class="sh_top_area">
+            <div class="sh_graph_unit">(단위:천원)</div>
+            <div class="sh_graph_btn">
+                <a href="javascript:void(0);" class="btn_prev disabled">이전<span class="blind">7일</span></a><!-- 비활성 -->
+                <a href="javascript:void(0);" class="btn_next">다음<span class="blind">7일</span></a>
+            </div>
+        </div>
+        <div class="sh_vertical">
+            <div class="sh_graph_level graph_line03"><!-- 라인갯수 조절 클래스 : graph_line03 graph_line04 graph_line05 -->
+                <div class="graph_line"><span class="num">100,000</span></div>
+                <div class="graph_line"><span class="num">50,000</span></div>
+                <div class="graph_line"><span class="num">0</span></div>
+            </div>
+            <div class="sh_item_wrap graph_item06"><!-- 라인갯수 조절 클래스 : graph_item06 graph_item07 -->
+                <div class="sh_item">
+                    <div class="sh_stick">
+                        <span style="height:15%"><span class="blind">100,1000원</span></span>
+                    </div>
+                    <span class="sh_spot">10일</span>
+                </div>
+                <div class="sh_item">
+                    <div class="sh_stick">
+                        <span style="height:34%"><span class="blind">100,1000원</span></span>
+                    </div>
+                    <span class="sh_spot">11일</span>
+                </div>
+                <div class="sh_item">
+                    <div class="sh_stick">
+                        <span style="height:48%"><span class="blind">100,1000원</span></span>
+                    </div>
+                    <span class="sh_spot">12일</span>
+                </div>
+                <div class="sh_item">
+                    <div class="sh_stick">
+                        <span style="height:52%"><span class="blind">100,1000원</span></span>
+                    </div>
+                    <span class="sh_spot">15일</span>
+                </div>
+                <div class="sh_item">
+                    <div class="sh_stick">
+                        <span style="height:64%"><span class="blind">100,1000원</span></span>
+                    </div>
+                    <span class="sh_spot">16일</span>
+                </div>
+                <div class="sh_item">
+                    <div class="sh_stick">
+                        <span style="height:78%"><span class="blind">100,1000원</span></span>
+                    </div>
+                    <span class="sh_spot">17일</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- vertical : sh_item02 -->
+    <div class="sh_graph_wrap">
+        <div class="sh_top_area">
+            <div class="sh_graph_unit">(단위:천원)</div>
+            <div class="sh_graph_btn">
+                <a href="javascript:void(0);" class="btn_prev disabled">이전<span class="blind">7일</span></a><!-- 비활성 -->
+                <a href="javascript:void(0);" class="btn_next">다음<span class="blind">7일</span></a>
+            </div>
+        </div>
+        <div class="sh_vertical">
+            <div class="sh_graph_level graph_line03"><!-- 라인갯수 조절 클래스 : graph_line03 graph_line04 graph_line05 -->
+                <div class="graph_line"><span class="num">100,000</span></div>
+                <div class="graph_line"><span class="num">50,000</span></div>
+                <div class="graph_line"><span class="num">0</span></div>
+            </div>
+            <div class="sh_item_wrap graph_item07"><!-- 라인갯수 조절 클래스 : graph_item06 graph_item07 -->
+                <div class="sh_item sh_item02">
+                    <div class="sh_stick">
+                        <span class="bg_deposit" style="height:15%"><span class="blind">100,1000원</span></span>
+                        <span class="bg_withdraw" style="height:20%"><span class="blind">100,1000원</span></span>
+                    </div>
+                    <span class="sh_spot">9일</span>
+                </div>
+                <div class="sh_item sh_item02">
+                    <div class="sh_stick">
+                        <span class="bg_deposit" style="height:15%"><span class="blind">100,1000원</span></span>
+                        <span class="bg_withdraw" style="height:20%"><span class="blind">100,1000원</span></span>
+                    </div>
+                    <span class="sh_spot">10일</span>
+                </div>
+                <div class="sh_item sh_item02">
+                    <div class="sh_stick">
+                        <span class="bg_deposit" style="height:34%"><span class="blind">100,1000원</span></span>
+                        <span class="bg_withdraw" style="height:52%"><span class="blind">100,1000원</span></span>
+                    </div>
+                    <span class="sh_spot">11일</span>
+                </div>
+                <div class="sh_item sh_item02">
+                    <div class="sh_stick">
+                        <span class="bg_deposit" style="height:48%"><span class="blind">100,1000원</span></span>
+                        <span class="bg_withdraw" style="height:80%"><span class="blind">100,1000원</span></span>
+                    </div>
+                    <span class="sh_spot">12일</span>
+                </div>
+                <div class="sh_item sh_item02">
+                    <div class="sh_stick">
+                        <span class="bg_deposit" style="height:52%"><span class="blind">100,1000원</span></span>
+                        <span class="bg_withdraw" style="height:85%"><span class="blind">100,1000원</span></span>
+                    </div>
+                    <span class="sh_spot">13일</span>
+                </div>
+                <div class="sh_item sh_item02">
+                    <div class="sh_stick">
+                        <span class="bg_deposit" style="height:64%"><span class="blind">100,1000원</span></span>
+                        <span class="bg_withdraw" style="height:90%"><span class="blind">100,1000원</span></span>
+                    </div>
+                    <span class="sh_spot">14일</span>
+                </div>
+                <div class="sh_item sh_item02">
+                    <div class="sh_stick">
+                        <span class="bg_deposit" style="height:78%"><span class="blind">100,1000원</span></span>
+                        <span class="bg_withdraw" style="height:97%"><span class="blind">100,1000원</span></span>
+                    </div>
+                    <span class="sh_spot">15일</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
